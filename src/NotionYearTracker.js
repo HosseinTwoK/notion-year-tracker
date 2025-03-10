@@ -23,7 +23,7 @@ const NotionYearTracker = () => {
               "Notion-Version": "2022-06-28",
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({}), // Added to resolve fetch error
+            body: JSON.stringify({}),
           }
         );
 
@@ -36,7 +36,6 @@ const NotionYearTracker = () => {
 
         if (records.length !== totalDays) {
           console.log("Mismatch in records, initializing database...");
-          // Initialization logic to create missing entries in Notion
         }
 
         const formattedDays = records.map((record) => ({
@@ -59,7 +58,7 @@ const NotionYearTracker = () => {
       { name: "Summer", days: 93 },
       { name: "Autumn", days: 92 },
     ];
-    if (days.length === 366) seasons[0].days = 90; // Adjust for leap years
+    if (days.length === 366) seasons[0].days = 90;
 
     let index = 0;
     return seasons.map((season) => (
@@ -68,13 +67,13 @@ const NotionYearTracker = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          marginBottom: 5,
+          marginBottom: 2,
         }}
       >
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: `repeat(${season.days}, 10px)`,
+            gridTemplateColumns: `repeat(${season.days}, 4px)`,
             gap: 2,
           }}
         >
@@ -85,8 +84,8 @@ const NotionYearTracker = () => {
               <div
                 key={day}
                 style={{
-                  width: 8,
-                  height: 8,
+                  width: 4,
+                  height: 4,
                   backgroundColor: isChecked ? "goldenrod" : "white",
                   border: `1px solid ${isChecked ? "goldenrod" : "#005050"}`,
                 }}
@@ -101,15 +100,21 @@ const NotionYearTracker = () => {
   return (
     <div
       style={{
+        position: "fixed",
+        bottom: 10,
+        right: 10,
         fontFamily: "Arial, sans-serif",
-        fontSize: 12,
+        fontSize: 10,
         textAlign: "center",
         backgroundColor: "#005050",
-        padding: 20,
+        padding: 10,
         borderRadius: 10,
+        maxWidth: 200,
+        overflow: "hidden",
+        boxShadow: "0 2px 10px rgba(0,0,0,0.2)"
       }}
     >
-      <h1 style={{ fontWeight: "bold", color: "white", marginBottom: 8 }}>
+      <h1 style={{ fontWeight: "bold", color: "white", marginBottom: 5, fontSize: 10 }}>
         Year {new Date().getFullYear()} Day Tracker
       </h1>
       {renderGrid()}
