@@ -32,7 +32,7 @@ const NotionYearTracker = () => {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              // Fetch all records to check for existing dates
+              // Empty body fetches all records in the database
             }),
           }
         );
@@ -54,10 +54,10 @@ const NotionYearTracker = () => {
         // Generate all dates from 2025-01-01 to 2025-12-31
         const datesToCreate = [];
         for (let i = 1; i <= totalDays; i++) {
-          const date = new Date(year, 0, i); // January 1st to December 31st, 2025
+          const date = new Date(year, 0, i); // Generate date for each day
           const dateString = date.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
 
-          // If the date is not already in the database, add it
+          // If the date is not already in the database, prepare to create it
           if (!existingDates.includes(dateString)) {
             datesToCreate.push({
               parent: { database_id: notionDatabaseId },
@@ -66,18 +66,18 @@ const NotionYearTracker = () => {
                   title: [
                     {
                       text: {
-                        content: "", // Empty Name
+                        content: "", // Empty Name (this column is left empty)
                       },
                     },
                   ],
                 },
                 Date: {
                   date: {
-                    start: dateString, // Set the Date column
+                    start: dateString, // Set the Date column with the date string
                   },
                 },
                 Check: {
-                  checkbox: false, // Default to unchecked
+                  checkbox: false, // Default to unchecked checkbox
                 },
               },
             });
@@ -102,7 +102,7 @@ const NotionYearTracker = () => {
           }
         }
 
-        // Now that records are created, set the days
+        // Now that records are created, set the days state with fetched records
         const formattedDays = records.map((record) => ({
           date: record.properties.Date.date.start,
           checked: record.properties.Check.checkbox,
