@@ -7,6 +7,9 @@ const NotionYearTracker = () => {
   const [days, setDays] = useState([]);
 
   useEffect(() => {
+    // Disable page scrollbars
+    document.body.style.overflow = "hidden";
+
     const fetchData = async () => {
       const year = new Date().getFullYear();
       const isLeapYear =
@@ -49,6 +52,10 @@ const NotionYearTracker = () => {
     };
 
     fetchData();
+
+    return () => {
+      document.body.style.overflow = "auto"; // Re-enable scrollbars when the component is unmounted
+    };
   }, []);
 
   const renderGrid = () => {
@@ -75,6 +82,7 @@ const NotionYearTracker = () => {
             display: "grid",
             gridTemplateColumns: `repeat(${season.days}, 4px)`,
             gap: 2,
+            overflowX: "hidden", // Ensure no horizontal scroll
           }}
         >
           {Array.from({ length: season.days }, (_, day) => {
@@ -104,18 +112,25 @@ const NotionYearTracker = () => {
         top: 10,
         left: 10,
         fontFamily: "Arial, sans-serif",
-        fontSize: 10,
+        fontSize: 9,
         textAlign: "center",
         backgroundColor: "#2f3437",
-        padding: 10,
+        padding: 8,
         borderRadius: 10,
-        maxWidth: 180,
-        overflow: "hidden",
+        maxWidth: 150,
+        overflowX: "hidden",
         boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-        border: "1px solid #373c3f"
+        border: "1px solid #373c3f",
       }}
     >
-      <h1 style={{ fontWeight: "bold", color: "white", marginBottom: 5, fontSize: 10 }}>
+      <h1
+        style={{
+          fontWeight: "bold",
+          color: "white",
+          marginBottom: 5,
+          fontSize: 9,
+        }}
+      >
         Year {new Date().getFullYear()} Day Tracker
       </h1>
       {renderGrid()}
