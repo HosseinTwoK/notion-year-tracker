@@ -62,9 +62,18 @@ const NotionYearTracker = () => {
             datesToCreate.push({
               parent: { database_id: notionDatabaseId },
               properties: {
+                Name: {
+                  title: [
+                    {
+                      text: {
+                        content: "", // Empty Name
+                      },
+                    },
+                  ],
+                },
                 Date: {
                   date: {
-                    start: dateString,
+                    start: dateString, // Set the Date column
                   },
                 },
                 Check: {
