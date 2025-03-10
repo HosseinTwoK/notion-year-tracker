@@ -7,6 +7,9 @@ const NotionYearTracker = () => {
   const [days, setDays] = useState([]);
 
   useEffect(() => {
+    // Change page background color to #191919
+    document.body.style.backgroundColor = "#191919";
+
     // Disable page scrollbars
     document.body.style.overflow = "hidden";
 
@@ -55,6 +58,7 @@ const NotionYearTracker = () => {
 
     return () => {
       document.body.style.overflow = "auto"; // Re-enable scrollbars when the component is unmounted
+      document.body.style.backgroundColor = ""; // Reset background color when unmounted
     };
   }, []);
 
@@ -94,7 +98,7 @@ const NotionYearTracker = () => {
                 style={{
                   width: 4,
                   height: 4,
-                  backgroundColor: isChecked ? "goldenrod" : "#2f3437",
+                  backgroundColor: isChecked ? "goldenrod" : "#191919", // Set empty squares to #191919
                   border: `1px solid ${isChecked ? "goldenrod" : "#373c3f"}`,
                 }}
               ></div>
@@ -114,22 +118,22 @@ const NotionYearTracker = () => {
         fontFamily: "Arial, sans-serif",
         fontSize: 9,
         textAlign: "center",
-        backgroundColor: "#2f3437",
+        backgroundColor: "#005050",
         padding: 8,
         borderRadius: 10,
         width: 770, // Increased width
-        height: 70, // Increased height
+        height: 90, // Increased height
         overflow: "hidden", // To prevent overflow scrollbars
         boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
-        border: "1px solid #373c3f",
+        border: "1px solid #005050",
       }}
     >
       <h1
         style={{
           fontWeight: "bold",
-          color: "white",
+          color: "#191919", // Set text color to #191919
           marginBottom: 5,
-          fontSize: 9,
+          fontSize: 20,
         }}
       >
         Year {new Date().getFullYear()} Day Tracker
