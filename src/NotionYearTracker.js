@@ -74,14 +74,14 @@ const NotionYearTracker = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          marginBottom: 2,
+          marginBottom: 4,
         }}
       >
         <div
           style={{
             display: "grid",
             gridTemplateColumns: `repeat(${season.days}, 4px)`,
-            gap: 2,
+            gap: 4, // 4px gap between squares
             overflowX: "hidden", // Ensure no horizontal scroll
           }}
         >
@@ -117,8 +117,9 @@ const NotionYearTracker = () => {
         backgroundColor: "#2f3437",
         padding: 8,
         borderRadius: 10,
-        maxWidth: 150,
-        overflowX: "hidden",
+        width: 770, // Increased width
+        height: 70, // Increased height
+        overflow: "hidden", // To prevent overflow scrollbars
         boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
         border: "1px solid #373c3f",
       }}
