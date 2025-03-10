@@ -86,8 +86,8 @@ const NotionYearTracker = () => {
                 style={{
                   width: 4,
                   height: 4,
-                  backgroundColor: isChecked ? "goldenrod" : "white",
-                  border: `1px solid ${isChecked ? "goldenrod" : "#005050"}`,
+                  backgroundColor: isChecked ? "goldenrod" : "#2f3437",
+                  border: `1px solid ${isChecked ? "goldenrod" : "#373c3f"}`,
                 }}
               ></div>
             );
@@ -101,17 +101,18 @@ const NotionYearTracker = () => {
     <div
       style={{
         position: "fixed",
-        bottom: 10,
-        right: 10,
+        bottom: 20,
+        right: 20,
         fontFamily: "Arial, sans-serif",
         fontSize: 10,
         textAlign: "center",
-        backgroundColor: "#005050",
+        backgroundColor: "#2f3437",
         padding: 10,
         borderRadius: 10,
-        maxWidth: 200,
+        maxWidth: 180,
         overflow: "hidden",
-        boxShadow: "0 2px 10px rgba(0,0,0,0.2)"
+        boxShadow: "0 2px 10px rgba(0,0,0,0.2)",
+        border: "1px solid #373c3f"
       }}
     >
       <h1 style={{ fontWeight: "bold", color: "white", marginBottom: 5, fontSize: 10 }}>
