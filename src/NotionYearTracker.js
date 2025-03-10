@@ -101,8 +101,8 @@ const NotionYearTracker = () => {
     <div
       style={{
         position: "fixed",
-        bottom: 20,
-        right: 20,
+        top: 10,
+        left: 10,
         fontFamily: "Arial, sans-serif",
         fontSize: 10,
         textAlign: "center",
