@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-const notionDatabaseId = "1b299a8d858080beb884d6ee4c3de464";
-const notionApiKey = "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";
+const notionDatabaseId = process.env.NOTION_DATABASE_ID;
+const notionApiKey = process.env.NOTION_API_KEY;
 
 const NotionYearTracker = () => {
   const [days, setDays] = useState([]);
